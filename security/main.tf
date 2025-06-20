@@ -1,17 +1,5 @@
 # modules/security/main.tf
 
-variable "vpc_id" {
-  type = string
-}
-
-variable "bastion_sg_name" {
-  type = string
-}
-
-variable "private_sg_name" {
-  type = string
-}
-
 resource "aws_security_group" "bastion_sg" {
   name        = var.bastion_sg_name
   description = "Allow SSH from anywhere"
@@ -58,12 +46,4 @@ resource "aws_security_group" "private_sg" {
   tags = {
     Name = var.private_sg_name
   }
-}
-
-output "bastion_sg_id" {
-  value = aws_security_group.bastion_sg.id
-}
-
-output "private_sg_id" {
-  value = aws_security_group.private_sg.id
 }

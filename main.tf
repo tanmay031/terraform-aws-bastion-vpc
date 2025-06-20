@@ -7,6 +7,7 @@ provider "aws" {
 
 module "vpc" {
   source = "./vpc"
+  region = var.region
 }
 
 module "security" {

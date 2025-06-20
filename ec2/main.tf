@@ -1,29 +1,5 @@
 # modules/ec2/main.tf
 
-variable "ami_id" {
-  type = string
-}
-
-variable "public_subnet_id" {
-  type = string
-}
-
-variable "private_subnet_id" {
-  type = string
-}
-
-variable "key_name" {
-  type = string
-}
-
-variable "bastion_sg_id" {
-  type = string
-}
-
-variable "private_sg_id" {
-  type = string
-}
-
 resource "aws_instance" "bastion" {
   ami                         = var.ami_id
   instance_type               = "t3.micro"
@@ -50,10 +26,3 @@ resource "aws_instance" "private" {
   }
 }
 
-output "bastion_public_ip" {
-  value = aws_instance.bastion.public_ip
-}
-
-output "private_instance_ip" {
-  value = aws_instance.private.private_ip
-}

@@ -1,9 +1,5 @@
 # modules/keypair/main.tf
 
-variable "key_name" {
-  type = string
-}
-
 resource "tls_private_key" "this" {
   algorithm = "RSA"
   rsa_bits  = 4096
@@ -20,6 +16,3 @@ resource "local_file" "private_key" {
   file_permission = "0400"
 }
 
-output "key_name" {
-  value = aws_key_pair.main.key_name
-}
